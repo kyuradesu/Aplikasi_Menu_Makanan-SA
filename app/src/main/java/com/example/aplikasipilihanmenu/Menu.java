@@ -3,15 +3,14 @@ package com.example.aplikasipilihanmenu;
 public class Menu {
 
     private String nama, harga, deskripsi;
-    private int gambar;
-    private double price;
+    private int nominal, gambar;
 
-    public Menu(String nama, String harga, String deskripsi, int gambar){//, double price) {
+    public Menu(String nama, String harga, int nominal, String deskripsi, int gambar){
         this.nama = nama;
         this.harga = harga;
+        this.nominal = nominal;
         this.deskripsi = deskripsi;
         this.gambar = gambar;
-//        this.price = price;
     }
 
     public String getNama() {
@@ -30,6 +29,9 @@ public class Menu {
         this.harga = harga;
     }
 
+    public int getNominal(){return nominal;}
+    public void setNominal(int nominal){this.nominal = nominal;}
+
     public String getDeskripsi() {
         return deskripsi;
     }
@@ -46,7 +48,4 @@ public class Menu {
         this.gambar = gambar;
     }
 
-//    public double getPrice(){return price;}
-//
-//    public void setPrice(double price){this.price = price;}
 }

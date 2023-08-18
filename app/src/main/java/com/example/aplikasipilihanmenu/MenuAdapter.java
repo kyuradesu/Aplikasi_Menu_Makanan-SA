@@ -22,16 +22,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView namaMenu, hargaMenu, deskripsiMenu;//, pricemenu;
+        public TextView namaMenu, hargaMenu, nominalMenu, deskripsiMenu;
         public ImageView gambarMenu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             namaMenu = (TextView) itemView.findViewById(R.id.nama_menu);
             hargaMenu = (TextView) itemView.findViewById(R.id.harga_menu);
+            nominalMenu = (TextView) itemView.findViewById(R.id.nominal_menu);
             deskripsiMenu = (TextView) itemView.findViewById(R.id.deskripsi_menu);
             gambarMenu = (ImageView) itemView.findViewById(R.id.gambar_menu);
-//            pricemenu = (TextView) itemView.findViewById(R.id.pricemenu);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +45,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
                     intent.putExtra("hargaMenu", menu.getHarga());
                     intent.putExtra("deskripsiMenu", menu.getDeskripsi());
                     intent.putExtra("gambarMenu", menu.getGambar());
-//                    intent.putExtra("pricemenu", menu.getPrice());
+                    intent.putExtra("nominalMenu", menu.getNominal());
                     view.getContext().startActivity(intent);
                 }
             });
@@ -62,12 +62,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Menu menu = menuList.get(position);
-//        Log.d("MenuAdapter", "price" + menu.getPrice());
         holder.namaMenu.setText(menu.getNama());
         holder.hargaMenu.setText(menu.getHarga());
+        holder.nominalMenu.setText(String.valueOf(menu.getNominal()));
         holder.deskripsiMenu.setText(menu.getDeskripsi());
         holder.gambarMenu.setImageResource(menu.getGambar());
-//        holder.pricemenu.setText(String.format("Rp. %.2f", menu.getPrice()));
 
 
     }

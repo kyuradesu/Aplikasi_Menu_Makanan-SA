@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-        menuList.add(new Menu("Nama : Nasi Rendang", "Harga : 26000", "Masakan daging yang berasal dari MinangKabau Sumatra Barat", R.drawable.rendang));
-        menuList.add(new Menu("Nama : Nasi Limpa", "Harga : 17000", "Rasanya yang enak dan lezat, gulai hati limpa sangan berguna bagi kesehatan", R.drawable.limpa));
-        menuList.add(new Menu("Nama : Nasi Babat", "Harga : 14000", "Gulai babat menggunakan bahan utama babat sapi yang dimasak dengan rempah-rempah khas", R.drawable.babat));
-        menuList.add(new Menu("Nama : Nasi Kikil", "Harga : 19000", "Kikil salah satu menu yang selalu ada di setiap rumah makan Padang", R.drawable.kikil));
+        menuList.add(new Menu("Nama : Nasi Rendang", "Harga : ",26000, "Masakan daging yang berasal dari MinangKabau Sumatra Barat", R.drawable.rendang));
+        menuList.add(new Menu("Nama : Nasi Limpa", "Harga : ",17000, "Rasanya yang enak dan lezat, gulai hati limpa sangan berguna bagi kesehatan", R.drawable.limpa));
+        menuList.add(new Menu("Nama : Nasi Babat", "Harga : ",15000, "Gulai babat menggunakan bahan utama babat sapi yang dimasak dengan rempah-rempah khas", R.drawable.babat));
+        menuList.add(new Menu("Nama : Nasi Kikil", "Harga : ",19000, "Kikil salah satu menu yang selalu ada di setiap rumah makan Padang", R.drawable.kikil));
     }
 }

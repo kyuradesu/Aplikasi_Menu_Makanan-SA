@@ -13,8 +13,8 @@ public class Detail extends AppCompatActivity {
 
     private Button btn_minus, btn_tambah, btn_order;
     private TextView txt_quantity, txt_total;
-    private int quantity = 0;
-    int price = 3;
+    int quantity = 0;
+    int price = 0, harga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,61 +27,79 @@ public class Detail extends AppCompatActivity {
         txt_quantity = findViewById(R.id.txt_quantity);
         txt_total = findViewById(R.id.txt_total);
 
-        uptadetotal();
 
 
-
-
-        btn_minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (quantity > 0){
-                    quantity--;
-                    uptadetotal();
-                }
-            }
+        btn_minus.setOnClickListener(V ->{
+            kurang();
+        });
+        btn_tambah.setOnClickListener(V ->{
+            tambah();
         });
 
-        btn_tambah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                quantity++;
-                uptadetotal();
-            }
-        });
+
+//        btn_minus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (quantity > 0){
+//                    quantity--;
+//                    uptadetotal();
+//                }
+//            }
+//        });
+//
+//        btn_tambah.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                quantity++;
+//                uptadetotal();
+//            }
+//        });
 
 
         TextView namaDetail = findViewById(R.id.nama_detail);
         TextView hargaDetail = findViewById(R.id.harga_detail);
+        TextView nominalDetail = findViewById(R.id.nominal_detail);
         TextView deskripsiDetail = findViewById(R.id.deskripsi_detail);
         ImageView gambarDetail = findViewById(R.id.gambar_detail);
-//        TextView price = findViewById(R.id.price);
+
 
 
         String namaMenu = getIntent().getStringExtra("namaMenu");
         String hargaMenu = getIntent().getStringExtra("hargaMenu");
+        int nominalMenu = getIntent().getIntExtra("nominalMenu", 0);
         String deskripsiMenu = getIntent().getStringExtra("deskripsiMenu");
         int gambarMenu = getIntent().getIntExtra("gambarMenu", 0);
-//        String pricemenu = getIntent().getStringExtra("pricemenu");
 
 
 
         namaDetail.setText(namaMenu);
         hargaDetail.setText(hargaMenu);
+        nominalDetail.setText(String.valueOf(nominalMenu));
         deskripsiDetail.setText(deskripsiMenu);
         gambarDetail.setImageResource(gambarMenu);
-//        price.setText(pricemenu);
-
 
 
 
 
     }
 
-    private void uptadetotal() {
+    private void tambah() {
+        quantity = quantity+1;
+        harga = getIntent().getIntExtra("nominalMenu", 0);
+        price = quantity * harga;
+
+        txt_total.setText(String.valueOf("Rp. : " +price));
         txt_quantity.setText(String.valueOf(quantity));
-        int total = quantity * price;
-        txt_total.setText("Rp. : " + total);
+    }
+
+    private void kurang() {
+        if (quantity != 0) {
+            quantity = quantity - 1;
+            harga = getIntent().getIntExtra("nominalMenu", 0);
+            price = quantity * harga;
+        }
+        txt_total.setText(String.valueOf("Rp. : " +price));
+        txt_quantity.setText(String.valueOf(quantity));
     }
 
 }
