@@ -2,6 +2,7 @@ package com.example.aplikasipilihanmenu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -37,24 +38,6 @@ public class Detail extends AppCompatActivity {
         });
 
 
-//        btn_minus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (quantity > 0){
-//                    quantity--;
-//                    uptadetotal();
-//                }
-//            }
-//        });
-//
-//        btn_tambah.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                quantity++;
-//                uptadetotal();
-//            }
-//        });
-
 
         TextView namaDetail = findViewById(R.id.nama_detail);
         TextView hargaDetail = findViewById(R.id.harga_detail);
@@ -79,6 +62,20 @@ public class Detail extends AppCompatActivity {
         gambarDetail.setImageResource(gambarMenu);
 
 
+
+        btn_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Detail.this, Pemesanan.class);
+
+                intent.putExtra("namaMenu", namaMenu);
+                intent.putExtra("nominalMenu", nominalMenu);
+                intent.putExtra("price", price);
+                intent.putExtra("quantity", quantity);
+
+                startActivity(intent);
+            }
+        });
 
 
     }
